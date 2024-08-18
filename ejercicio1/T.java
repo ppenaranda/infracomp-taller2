@@ -25,22 +25,22 @@ public class T extends Thread{
         int miMax = -1;
         int final_ = this.inicio + this.x;
         
-        if (final_ > M[0].length - 1){
-            final_ = M[0].length - 1;
+        if (final_ > M[0].length){
+            final_ = M[0].length;
         }
         for (int i = this.inicio; i < final_; i++){
             if (miMax < M[0][i]){
             miMax = M[0][i];
             }     
-            oMax.anotar(miMax);
         }
+        oMax.anotar(miMax);
     }
 
     public static void generarMatriz(int n){
         M = new int[1][n];
         Random random = new Random();
 
-        for (int i = 0; i < n - 1; i++){
+        for (int i = 0; i < n; i++){
             M[0][i] = random.nextInt(10);
         }
     }
@@ -56,7 +56,7 @@ public class T extends Thread{
         NTHR = nThreadsNumero;
 
         generarMatriz(nVectorNumero);
-        System.out.println("La matriz es: " + Arrays.deepToString(M));
+        System.out.println("El vector es: " + Arrays.deepToString(M));
         T [] ta = new T[NTHR];
 
         int x = (M[0].length)/NTHR;
@@ -68,11 +68,12 @@ public class T extends Thread{
         for (T ta1 : ta) {
             ta1.start();
         }
-        sleep(200);
+
+        for (T ta1 : ta) {
+            ta1.join();
+        }
+
         int maximo_ = oMax.darMaximo();
         System.out.println("El valor máximo del vector es: "+ maximo_);
-    
-        // int m_i = 9;
-
     }
 }
