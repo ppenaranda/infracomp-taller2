@@ -16,7 +16,6 @@ public class T extends Thread{
 
     public T (int inicio, int x){
         this.inicio = inicio;
-
         this.x = x;
     }
     
