@@ -2,7 +2,7 @@
 import java.util.Random;
 
 public class Pastelero extends Thread{
-    private Pastel pastel;
+    private final Pastel pastel;
 
     public Pastelero(Pastel pastel){
         this.pastel = pastel;
