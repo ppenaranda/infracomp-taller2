@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 public class T extends Thread{
     private final Id  idManejador;
     private int id;
@@ -13,7 +16,11 @@ public class T extends Thread{
     }
 
     public static void main(String[] args) {
-        int numThreads = 10;
+
+        Scanner  sc = new Scanner(System.in);
+
+        System.out.println("Ingrese el número de Threads");
+        int numThreads = sc.nextInt();
         Id idManejador = new Id(numThreads);
 
         for (int i = 0; i < numThreads; i++){
